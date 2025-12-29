@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Yield Prediction Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background: #1f77b4; color: white; padding: 20px; }
+        .content { margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌾 Crop Yield Prediction System</h1>
+        <p>Nigeria Climate-Food Security Dashboard</p>
+    </div>
+    
+    <div class="content">
+        <h2>Recent Predictions</h2>
+        <p>Total Predictions: {{ total_predictions }}</p>
+        
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Crop</th>
+                <th>State</th>
+                <th>Predicted Yield</th>
+                <th>Model</th>
+            </tr>
+            {% for pred in recent_predictions %}
+            <tr>
+                <td>{{ pred.created_at|date:"Y-m-d" }}</td>
+                <td>{{ pred.crop }}</td>
+                <td>{{ pred.state }}</td>
+                <td>{{ pred.predicted_yield|floatformat:2 }} t/ha</td>
+                <td>{{ pred.model_used }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+        <p><a href="{% url 'predict' %}">Make New Prediction</a></p>
+    </div>
+</body>
+</html>

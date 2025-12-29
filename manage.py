@@ -3,6 +3,11 @@
 import os
 import sys
 
+# Suppress TensorFlow oneDNN/info logs during Django management commands.
+# Disable oneDNN custom-op messages and reduce TF logging level.
+os.environ.setdefault('TF_ENABLE_ONEDNN_OPTS', '0')
+os.environ.setdefault('TF_CPP_MIN_LOG_LEVEL', '2')
+
 
 def main():
     """Run administrative tasks."""

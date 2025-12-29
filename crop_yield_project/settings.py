@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -135,6 +136,23 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 100
+}
+
+# Jazzmin admin theme settings
+JAZZMIN_SETTINGS = {
+    "site_title": "Crop Yield Admin",
+    "site_header": "Crop Yield Admin",
+    "welcome_sign": "Welcome to the Crop Yield Admin",
+    # Optional: change the model shown in the global search box
+    "search_model": "auth.User",
+    # Order some models (example)
+    "order_with_respect_to": ["auth.User"],
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": True,
+    "brand_colour": "navbar-dark bg-primary",
 }
 
 # Default primary key field type
